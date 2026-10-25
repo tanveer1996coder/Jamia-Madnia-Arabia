@@ -1,0 +1,10 @@
+import Link from "next/link";
+import { ArrowLeft, LockKeyhole, ShieldCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { copy, localize, type Locale } from "@/lib/i18n";
+
+export function AccessPlaceholder({ locale, area }: { locale: Locale; area: "parent" | "admin" }) {
+  const parent = area === "parent";
+  const t = copy[locale];
+  return <section className="access-section container"><div className="access-card"><span className="access-icon"><LockKeyhole size={30} strokeWidth={1.3} aria-hidden="true" /></span><p className="eyebrow">{localize(locale, "A PRIVATE SPACE", "ایک محفوظ حصہ")}</p><h1>{parent ? t.portal : t.admin}</h1><span className="status-pill">{t.availableLater}</span><p className="access-description">{parent ? localize(locale, "The parent portal will provide verified guardians with access to their children’s published attendance, progress reports, and notifications.", "والدین کے پورٹل میں تصدیق شدہ سرپرست اپنے بچوں کی شائع شدہ حاضری، تعلیمی رپورٹس اور اطلاعات دیکھ سکیں گے۔") : localize(locale, "This area is reserved for the institution’s Super Admin to manage approved content and academic records.", "یہ حصہ ادارے کے منتظمِ اعلیٰ کے لیے مختص ہے، جہاں منظور شدہ مواد اور تعلیمی ریکارڈ کا انتظام کیا جائے گا۔")}</p><div className="access-note"><ShieldCheck size={20} aria-hidden="true" /><p>{parent ? localize(locale, "Sign-in is not open yet. No student records are available through this website at this stage.", "لاگ اِن ابھی شروع نہیں ہوا۔ اس مرحلے میں ویب سائٹ پر کسی طالب علم کا ریکارڈ دستیاب نہیں ہے۔") : localize(locale, "Administrator sign-in is not configured. No content management or student data is available here.", "منتظم کا لاگ اِن ابھی ترتیب نہیں دیا گیا۔ یہاں مواد کا انتظام یا طلبہ کا ریکارڈ دستیاب نہیں ہے۔")}</p></div><div className="access-actions"><Button asChild><Link href={`/${locale}`}><ArrowLeft className="directional" aria-hidden="true" />{t.pageBack}</Link></Button>{parent && <Button asChild variant="outline"><Link href={`/${locale}/contact`}>{t.contact}</Link></Button>}</div></div></section>;
+}

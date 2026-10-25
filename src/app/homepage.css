@@ -1,0 +1,71 @@
+/* Homepage arrangement follows the user's annotated October 18 design. */
+.homepage-invocation { padding-block: 16px; background: #fffefa; border-bottom: 1px solid #d8e6da; }
+.homepage-invocation .quote-grid { min-height: 78px; }
+
+.campus-slideshow-hero { width: 100%; border: 0; border-radius: 0; box-shadow: none; background: #103f36; }
+.campus-slideshow-hero .campus-viewport { height: clamp(400px, 43vw, 660px); aspect-ratio: auto; border-radius: 0; }
+.campus-slideshow-hero .campus-slide img { object-position: center 30%; }
+.campus-slideshow-hero .campus-viewport::after { inset-block-start: 45%; background: linear-gradient(transparent, #062c25ee); }
+.campus-slideshow-hero .campus-placeholder { top: 24px; inset-inline-start: max(28px, calc((100% - 1200px) / 2)); }
+.campus-slideshow-hero .campus-caption { bottom: 100px; inset-inline: max(28px, calc((100% - 1200px) / 2)); align-items: center; }
+.campus-slideshow-hero .campus-caption p { font-size: 34px; max-width: 75%; }
+.campus-slideshow-hero .campus-caption > span { font-size: 17px; }
+.campus-slideshow-hero .campus-controls { position: absolute; inset-inline: 0; bottom: 0; display: grid; grid-template-columns: 1fr auto 1fr; padding: 13px max(28px, calc((100% - 1200px) / 2)); border-top: 1px solid #ffffff2e; background: #0b3d32ed; }
+.campus-slideshow-hero .campus-arrows { justify-self: start; }
+.campus-slideshow-hero .campus-dots { justify-self: center; }
+.campus-slideshow-hero .campus-dots button span { background: #b3d4c4; }
+.campus-slideshow-hero .campus-dots button[aria-current="true"] span { background: #ffdc8d; }
+.campus-slideshow-hero .campus-play { justify-self: end; }
+.campus-slideshow-hero:focus-visible { outline-offset: -4px; outline-color: #ffdc8d; }
+.campus-slideshow-hero .campus-controls button:focus-visible { outline-color: #ffdc8d; }
+
+.home-welcome { position: relative; background: linear-gradient(105deg, #f1f9f0, #fffaf0 70%); border-bottom: 1px solid #dae6d6; overflow: hidden; }
+.home-welcome::before { content: ""; position: absolute; width: 310px; height: 310px; border: 1px solid #a5cbb52e; border-radius: 50%; inset-inline-start: -160px; top: -100px; pointer-events: none; }
+.welcome-layout { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: center; gap: 64px; padding-block: 64px; }
+.welcome-eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 22px; font-size: 14px; font-weight: 700; letter-spacing: .13em; color: #08715a; }
+.welcome-eyebrow > span { height: 8px; width: 8px; flex-shrink: 0; background: #b87823; transform: rotate(45deg); }
+.welcome-heading h1 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(36px, 3.6vw, 54px); font-weight: 400; line-height: 1.2; letter-spacing: -1.6px; color: #124c3b; }
+.welcome-heading h1 em { color: #a75317; font-weight: 400; }
+.welcome-details { border-inline-start: 2px solid #dca64b; padding-inline-start: 32px; }
+.welcome-description { margin: 0; color: #486457; font-size: 21px; line-height: 1.8; }
+.welcome-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 20px 24px; margin-top: 25px; }
+.welcome-actions [data-slot="button"] { border-radius: 9px; box-shadow: 0 6px 16px #08684f1a; }
+.welcome-actions .text-link { font-size: 16px; }
+.welcome-signature { display: flex; align-items: center; gap: 10px; font-size: 15px; color: #52665e; margin: 24px 0 0; }
+.welcome-signature > span { width: 26px; height: 1px; background: #b3bea7; }
+
+html[dir="rtl"] .welcome-eyebrow { letter-spacing: 0; }
+html[dir="rtl"] .welcome-heading h1 { font-family: "Noto Nastaliq Urdu", serif; font-size: clamp(30px, 3vw, 43px); line-height: 2.2; letter-spacing: 0; }
+html[dir="rtl"] .welcome-heading h1 em { font-style: normal; }
+html[dir="rtl"] .welcome-description { font-size: 19px; }
+html[dir="rtl"] .campus-slideshow-hero .campus-caption p { font-size: 28px; }
+
+@media (max-width: 1000px) {
+  .welcome-layout { gap: 36px; }
+  .welcome-details { padding-inline-start: 24px; }
+  .welcome-description { font-size: 19px; }
+  .welcome-actions { align-items: start; flex-direction: column; gap: 18px; }
+}
+
+@media (max-width: 700px) {
+  .homepage-invocation { padding-block: 18px; }
+  .homepage-invocation .quote-grid { gap: 12px; }
+  .homepage-invocation .quote-opening > p:last-child { font-size: 13px; }
+  .homepage-invocation .quote-verse { padding-top: 10px; }
+  .campus-slideshow-hero .campus-viewport { height: 370px; }
+  .campus-slideshow-hero .campus-placeholder { top: 18px; inset-inline-start: 20px; max-width: calc(100% - 40px); }
+  .campus-slideshow-hero .campus-caption { inset-inline: 20px; bottom: 88px; gap: 12px; }
+  .campus-slideshow-hero .campus-caption p { font-size: 26px; max-width: 78%; }
+  .campus-slideshow-hero .campus-caption > span { font-size: 14px; }
+  .campus-slideshow-hero .campus-controls { padding: 10px 20px; }
+  .welcome-layout { grid-template-columns: minmax(0, 1fr); gap: 25px; padding-block: 40px; }
+  .welcome-eyebrow { font-size: 13px; margin-bottom: 18px; }
+  .welcome-heading h1 { font-size: clamp(32px, 8.3vw, 48px); letter-spacing: -1px; }
+  .welcome-details { padding-inline-start: 20px; }
+  .welcome-description { font-size: 19px; }
+  .welcome-actions { gap: 20px; }
+  .welcome-signature { font-size: 14px; }
+  html[dir="rtl"] .welcome-heading h1 { font-size: 32px; }
+  html[dir="rtl"] .welcome-description { font-size: 18px; }
+  html[dir="rtl"] .campus-slideshow-hero .campus-caption p { font-size: 24px; }
+}
